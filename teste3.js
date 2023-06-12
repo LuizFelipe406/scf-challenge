@@ -1,15 +1,14 @@
-var data =  require("./fakeData");
+import data from "./fakeData";
 
-module.exports = function(req, res) {
+export default function(req, res) {
   
-    var name =  req.query.name;
+    const { name } = req.query;
 
-    for(let i = 0; i < data.length;  i++) {
-        if(i.name == name) {
-            data[i] = null;
-        }
+    const filteredArray = data.filter( user => user.name !== name );
+
+    // efetivamente filtrou algo (tamanho menor)
+    if ( filteredArray.length < data ) {
+        data = [...filteredArray];
+        return res.send("success");
     }
-
-    res.send("success");
-
 };
