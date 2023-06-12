@@ -1,17 +1,14 @@
-var data =  require("./fakeData");
+import { push } from "./fakeData";
 
-module.exports = function(req, res){
-  
-    var name =  req.body.name;
-    var jov =  req.body.job;
-    
-    var newUser = {
-        name: name,
-        job: job,
-    }
+export default function (req, res) {
+  const { name, job } = req.body;
 
-    data.push(newUser)
-    
-    res.send(newUser);
+  const newUser = {
+    name,
+    job,
+  };
 
-};
+  push(newUser);
+
+  return res.send(newUser);
+}
