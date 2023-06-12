@@ -5,8 +5,10 @@ const getUser = (req, res, next) => {
 
   const searchedUser = data.find((user) => user.name === name);
 
-  if (searchedUser) res.send(searchedUser);
-  else next("User not found");
+  if (searchedUser) {
+    searchedUser.accesses += 1;
+    res.send(searchedUser);
+  } else next("User not found");
 };
 
 const getUsers = (req, res, next) => {

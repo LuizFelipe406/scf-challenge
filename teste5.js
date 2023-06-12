@@ -1,9 +1,11 @@
+import data from "./fakeData";
 
+export default function (req, res) {
+  const { name } = req.query;
 
-module.exports = function(req, res){
-    
-    var name =  req.query.name;
+  const searchedUser = data.find((user) => user.name === name);
 
-    res.send("Usuário " +  name  + "  foi lido 0 vezes.");
-
-};
+  if (searchedUser) {
+    res.send(`Usuário ${name} foi lido ${searchedUser.accesses} vezes`);
+  }
+}
