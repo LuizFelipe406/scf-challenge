@@ -1,4 +1,4 @@
-import data from "./fakeData";
+import data from "./fakeData.js";
 
 export default function (req, res) {
   const { name } = req.query;

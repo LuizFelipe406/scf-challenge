@@ -4,9 +4,10 @@ const fakeData  =  [
         id: 1,
         name: "João Oliveira",
         job: "Desenvolvedor",
-        accesses: 0
+        accesses: 0,
+        role: "admin"
     }
 ]
 
 
-module.exports = fakeData;
+export default fakeData;

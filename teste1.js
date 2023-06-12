@@ -1,4 +1,4 @@
-import data from "./fakeData";
+import data from "./fakeData.js";
 
 const getUser = (req, res, next) => {
   const { name } = req.query;
@@ -8,7 +8,7 @@ const getUser = (req, res, next) => {
   if (searchedUser) {
     searchedUser.accesses += 1;
     res.send(searchedUser);
-  } else next("User not found");
+  } else res.send("User not found");
 };
 
 const getUsers = (req, res, next) => {

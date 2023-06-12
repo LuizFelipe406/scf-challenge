@@ -1,14 +1,13 @@
-import data from "./fakeData";
+import data from "./fakeData.js";
 
-export default function(req, res) {
-  
-    const { name } = req.query;
+export default function (req, res) {
+  const { name } = req.query;
 
-    const filteredArray = data.filter( user => user.name !== name );
+  const userIndex = data.findIndex(user => user.name === name);
 
-    // efetivamente filtrou algo (tamanho menor)
-    if ( filteredArray.length < data ) {
-        data = [...filteredArray];
-        return res.send("success");
-    }
-};
+  if (userIndex !== -1) {
+    data.splice(userIndex, 1);
+    return res.send("success");
+  }
+  return res.send("User not found");
+}
