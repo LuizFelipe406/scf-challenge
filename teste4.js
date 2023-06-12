@@ -1,13 +1,15 @@
-var data =  require("./fakeData");
+import { find } from "./fakeData";
 
-module.exports =  function(req, res) {
-  
-    var id =  req.query.id;
+export default  function(req, res) {
+    const { id } = req.query;
+    const { name, job } = req.body;
 
-    const reg = data.find(d => id == id);
-    reg.name = req.body.name;
-    reg.job = req.body.job;
+    const user = find( user => user.id === id);
 
-    res.send(reg);
+    if (user) {
+        user.name = name;
+        user.job = job;
+    }
 
+    return res.send(user);
 };
