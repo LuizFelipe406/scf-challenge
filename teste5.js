@@ -6,6 +6,7 @@ export default function (req, res) {
   const searchedUser = data.find((user) => user.name === name);
 
   if (searchedUser) {
-    res.send(`Usuário ${name} foi lido ${searchedUser.accesses} vezes`);
+    return res.send(`Usuário ${name} foi lido ${searchedUser.accesses} vezes`);
   }
+  return res.send("User not found");
 }
